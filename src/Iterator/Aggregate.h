@@ -5,7 +5,7 @@
 
 class Aggregate {
  public:
-   virtual Iterator *iterator() { return new Iterator(); };
+  virtual Iterator *iterator() { return new Iterator(); }
 };
 
 #endif  // SRC_ITERATOR_AGGREGATE_H_

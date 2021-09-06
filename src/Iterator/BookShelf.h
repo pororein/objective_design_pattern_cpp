@@ -11,12 +11,10 @@ class BookShelfIterator;
 
 class BookShelf: public Aggregate {
  public:
-  BookShelf() {}
-  ~BookShelf() { delete this; }
   void appendBook(Book *book);
   Book* getBookAt(int index);
   int getLength();
-  Iterator *iterator();
+  Iterator *iterator() override;
 
  private:
   std::vector<Book*> books;

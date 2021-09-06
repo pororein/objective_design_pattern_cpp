@@ -8,12 +8,12 @@ class BookShelf;
 
 class BookShelfIterator: public Iterator {
  public:
-  BookShelfIterator(BookShelf *bookShelf) {
+  explicit BookShelfIterator(BookShelf *bookShelf) {
     this->bookShelf = bookShelf;
     this->index = 0;
   }
-  bool hasNext();
-  void *next();
+  bool hasNext() override;
+  void *next() override;
 
  private:
   BookShelf *bookShelf;

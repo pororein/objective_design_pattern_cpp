@@ -5,7 +5,7 @@
 
 class Book {
  public:
-  Book(std::string name) {
+  explicit Book(const std::string &name) {
     this->name = name;
   }
   ~Book() {
