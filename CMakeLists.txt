@@ -24,7 +24,9 @@ set(ADAPTER_TEST_SRC
   src/Adapter/Banner.cpp
   src/Adapter/Print.h
   src/Adapter/PrintBanner.h
-  src/Adapter/PrintBanner.cpp)
+  src/Adapter/PrintBanner.cpp
+  src/Adapter/PrintBannerAssign.h
+  src/Adapter/PrintBannerAssign.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
