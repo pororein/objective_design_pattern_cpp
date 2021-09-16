@@ -27,6 +27,14 @@ set(ADAPTER_TEST_SRC
   src/Adapter/PrintBanner.cpp
   src/Adapter/PrintBannerAssign.h
   src/Adapter/PrintBannerAssign.cpp)
+set(TEMPLATE_TEST_SRC
+  test/TemplateTest.cpp
+  src/Template/AbstractDisplay.h
+  src/Template/AbstractDisplay.cpp
+  src/Template/CharDisplay.h
+  src/Template/CharDisplay.cpp
+  src/Template/StringDisplay.h
+  src/Template/StringDisplay.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
@@ -41,10 +49,15 @@ add_executable(adapterTest ${ADAPTER_TEST_SRC})
 target_link_libraries(adapterTest GTest::gtest GTest::gtest_main)
 add_test(NAME adapterTest COMMAND adapterTest)
 
+add_executable(templateTest ${TEMPLATE_TEST_SRC})
+target_link_libraries(templateTest GTest::gtest GTest::gtest_main)
+add_test(NAME templateTest COMMAND templateTest)
+
 # CTestに単体テストを登録
 gtest_discover_tests(sampleTest)
 gtest_discover_tests(iteratorTest)
 gtest_discover_tests(adapterTest)
+gtest_discover_tests(templateTest)
 
 add_executable(object_design_pattern main.cpp)
 
