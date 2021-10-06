@@ -44,7 +44,11 @@ set(FACTORY_TEST_SRC
   src/Factory/idcard/IDCard.cpp
   src/Factory/idcard/IDCardFactory.h
   src/Factory/idcard/IDCardFactory.cpp)
-
+set(SINGLETON_TEST_SRC
+  test/SingletonTest.cpp
+  src/Singleton/Singleton.h
+  src/Singleton/Singleton.cpp
+)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
@@ -67,12 +71,17 @@ add_executable(factoryTest ${FACTORY_TEST_SRC})
 target_link_libraries(factoryTest GTest::gtest GTest::gtest_main)
 add_test(NAME factoryTest COMMAND factoryTest)
 
+add_executable(singletonTest ${SINGLETON_TEST_SRC})
+target_link_libraries(singletonTest GTest::gtest GTest::gtest_main)
+add_test(NAME singletonTest COMMAND singletonTest)
+
 # CTestに単体テストを登録
 gtest_discover_tests(sampleTest)
 gtest_discover_tests(iteratorTest)
 gtest_discover_tests(adapterTest)
 gtest_discover_tests(templateTest)
 gtest_discover_tests(factoryTest)
+gtest_discover_tests(singletonTest)
 
 add_executable(object_design_pattern main.cpp)
 
