@@ -49,6 +49,13 @@ set(SINGLETON_TEST_SRC
   src/Singleton/Singleton.h
   src/Singleton/Singleton.cpp
 )
+set(PROTOTYPE_TEST_SRC
+  test/PrototypeTest.cpp
+  src/Prototype/framework/Product.h
+  src/Prototype/framework/Manager.h
+  src/Prototype/framework/Manager.cpp
+  src/Prototype/MessageBox.cpp
+  src/Prototype/UnderlinePen.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
@@ -75,6 +82,10 @@ add_executable(singletonTest ${SINGLETON_TEST_SRC})
 target_link_libraries(singletonTest GTest::gtest GTest::gtest_main)
 add_test(NAME singletonTest COMMAND singletonTest)
 
+add_executable(prototypeTest ${PROTOTYPE_TEST_SRC})
+target_link_libraries(prototypeTest GTest::gtest GTest::gtest_main)
+add_test(NAME prototypeTest COMMAND prototypeTest)
+
 # CTestに単体テストを登録
 gtest_discover_tests(sampleTest)
 gtest_discover_tests(iteratorTest)
@@ -82,6 +93,7 @@ gtest_discover_tests(adapterTest)
 gtest_discover_tests(templateTest)
 gtest_discover_tests(factoryTest)
 gtest_discover_tests(singletonTest)
+gtest_discover_tests(prototypeTest)
 
 add_executable(object_design_pattern main.cpp)
 
