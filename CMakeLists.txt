@@ -56,6 +56,15 @@ set(PROTOTYPE_TEST_SRC
   src/Prototype/framework/Manager.cpp
   src/Prototype/MessageBox.cpp
   src/Prototype/UnderlinePen.cpp)
+set(BUILDER_TEST_SRC
+  test/BuilderTest.cpp
+  src/Builder/Builder.h
+  src/Builder/Director.h
+  src/Builder/Director.cpp
+  src/Builder/TextBuilder.h
+  src/Builder/TextBuilder.cpp
+  src/Builder/HTMLBuilder.h
+  src/Builder/HTMLBuilder.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
@@ -86,6 +95,10 @@ add_executable(prototypeTest ${PROTOTYPE_TEST_SRC})
 target_link_libraries(prototypeTest GTest::gtest GTest::gtest_main)
 add_test(NAME prototypeTest COMMAND prototypeTest)
 
+add_executable(builderTest ${BUILDER_TEST_SRC})
+target_link_libraries(builderTest GTest::gtest GTest::gtest_main)
+add_test(NAME builderTest COMMAND builderTest)
+
 # CTestに単体テストを登録
 gtest_discover_tests(sampleTest)
 gtest_discover_tests(iteratorTest)
@@ -94,6 +107,7 @@ gtest_discover_tests(templateTest)
 gtest_discover_tests(factoryTest)
 gtest_discover_tests(singletonTest)
 gtest_discover_tests(prototypeTest)
+gtest_discover_tests(builderTest)
 
 add_executable(object_design_pattern main.cpp)
 
