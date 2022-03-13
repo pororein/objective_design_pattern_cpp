@@ -7,64 +7,64 @@ include(GoogleTest)
 
 enable_testing()
 
-set(SAMPLE_TEST_SRC test/SampleTest.cpp src/TestObject/TestTargetSample.cpp)
+set(SAMPLE_TEST_SRC src/test/SampleTest.cpp src/main/TestObject/TestTargetSample.cpp)
 set(ITERATOR_TEST_SRC 
-  test/IteratorTest.cpp 
-  src/Iterator/Aggregate.h
-  src/Iterator/Iterator.h
-  src/Iterator/Book.h 
-  src/Iterator/BookShelf.h
-  src/Iterator/BookShelfIterator.h
-  src/Iterator/BookShelf.cpp 
-  src/Iterator/BookShelfIterator.cpp 
+  src/test/IteratorTest.cpp 
+  src/main/Iterator/Aggregate.h
+  src/main/Iterator/Iterator.h
+  src/main/Iterator/Book.h 
+  src/main/Iterator/BookShelf.h
+  src/main/Iterator/BookShelfIterator.h
+  src/main/Iterator/BookShelf.cpp 
+  src/main/Iterator/BookShelfIterator.cpp 
   )
 set(ADAPTER_TEST_SRC
-  test/AdapterTest.cpp
-  src/Adapter/Banner.h
-  src/Adapter/Banner.cpp
-  src/Adapter/Print.h
-  src/Adapter/PrintBanner.h
-  src/Adapter/PrintBanner.cpp
-  src/Adapter/PrintBannerAssign.h
-  src/Adapter/PrintBannerAssign.cpp)
+  src/test/AdapterTest.cpp
+  src/main/Adapter/Banner.h
+  src/main/Adapter/Banner.cpp
+  src/main/Adapter/Print.h
+  src/main/Adapter/PrintBanner.h
+  src/main/Adapter/PrintBanner.cpp
+  src/main/Adapter/PrintBannerAssign.h
+  src/main/Adapter/PrintBannerAssign.cpp)
 set(TEMPLATE_TEST_SRC
-  test/TemplateTest.cpp
-  src/Template/AbstractDisplay.h
-  src/Template/AbstractDisplay.cpp
-  src/Template/CharDisplay.h
-  src/Template/CharDisplay.cpp
-  src/Template/StringDisplay.h
-  src/Template/StringDisplay.cpp)
+  src/test/TemplateTest.cpp
+  src/main/Template/AbstractDisplay.h
+  src/main/Template/AbstractDisplay.cpp
+  src/main/Template/CharDisplay.h
+  src/main/Template/CharDisplay.cpp
+  src/main/Template/StringDisplay.h
+  src/main/Template/StringDisplay.cpp)
 set(FACTORY_TEST_SRC
-  test/FactoryTest.cpp
-  src/Factory/framework/Product.h
-  src/Factory/framework/Factory.h
-  src/Factory/framework/Factory.cpp
-  src/Factory/idcard/IDCard.h
-  src/Factory/idcard/IDCard.cpp
-  src/Factory/idcard/IDCardFactory.h
-  src/Factory/idcard/IDCardFactory.cpp)
+  src/test/FactoryTest.cpp
+  src/main/Factory/framework/Product.h
+  src/main/Factory/framework/Factory.h
+  src/main/Factory/framework/Factory.cpp
+  src/main/Factory/idcard/IDCard.h
+  src/main/Factory/idcard/IDCard.cpp
+  src/main/Factory/idcard/IDCardFactory.h
+  src/main/Factory/idcard/IDCardFactory.cpp)
 set(SINGLETON_TEST_SRC
-  test/SingletonTest.cpp
-  src/Singleton/Singleton.h
-  src/Singleton/Singleton.cpp
+  src/test/SingletonTest.cpp
+  src/main/Singleton/Singleton.h
+  src/main/Singleton/Singleton.cpp
 )
 set(PROTOTYPE_TEST_SRC
-  test/PrototypeTest.cpp
-  src/Prototype/framework/Product.h
-  src/Prototype/framework/Manager.h
-  src/Prototype/framework/Manager.cpp
-  src/Prototype/MessageBox.cpp
-  src/Prototype/UnderlinePen.cpp)
+  src/test/PrototypeTest.cpp
+  src/main/Prototype/framework/Product.h
+  src/main/Prototype/framework/Manager.h
+  src/main/Prototype/framework/Manager.cpp
+  src/main/Prototype/MessageBox.cpp
+  src/main/Prototype/UnderlinePen.cpp)
 set(BUILDER_TEST_SRC
-  test/BuilderTest.cpp
-  src/Builder/Builder.h
-  src/Builder/Director.h
-  src/Builder/Director.cpp
-  src/Builder/TextBuilder.h
-  src/Builder/TextBuilder.cpp
-  src/Builder/HTMLBuilder.h
-  src/Builder/HTMLBuilder.cpp)
+  src/test/BuilderTest.cpp
+  src/main/Builder/Builder.h
+  src/main/Builder/Director.h
+  src/main/Builder/Director.cpp
+  src/main/Builder/TextBuilder.h
+  src/main/Builder/TextBuilder.cpp
+  src/main/Builder/HTMLBuilder.h
+  src/main/Builder/HTMLBuilder.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})

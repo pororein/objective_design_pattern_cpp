@@ -1,25 +1,28 @@
 #include <gtest/gtest.h>
-#include "../src/Iterator/Book.h"
-#include "../src/Iterator/BookShelf.h"
-#include "../src/Iterator/BookShelfIterator.h"
-#include "../src/Iterator/Iterator.h"
+#include "../main/Iterator/Book.h"
+#include "../main/Iterator/BookShelf.h"
+#include "../main/Iterator/BookShelfIterator.h"
+#include "../main/Iterator/Iterator.h"
 
-class IteratorTest : public ::testing::Test {
- protected:
-  IteratorTest() {
+class IteratorTest : public ::testing::Test
+{
+protected:
+  IteratorTest()
+  {
     target = new BookShelf();
-    Book* a = new Book("a");
-    Book* b = new Book("b");
-    Book* c = new Book("c");
+    Book *a = new Book("a");
+    Book *b = new Book("b");
+    Book *c = new Book("c");
     target->BookShelf::appendBook(a);
     target->BookShelf::appendBook(b);
     target->BookShelf::appendBook(c);
   }
 
-  BookShelf* target;
+  BookShelf *target;
 };
 
-TEST_F(IteratorTest, IteratorLoopTest) {
+TEST_F(IteratorTest, IteratorLoopTest)
+{
   Iterator *itr = target->BookShelf::iterator();
   ASSERT_TRUE(itr->hasNext());
   Book *book = reinterpret_cast<Book *>(itr->next());
@@ -36,7 +39,8 @@ TEST_F(IteratorTest, IteratorLoopTest) {
   ASSERT_FALSE(itr->hasNext());
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

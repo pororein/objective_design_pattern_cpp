@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <string>
-#include "../src/Builder/Builder.h"
-#include "../src/Builder/Director.h"
-#include "../src/Builder/TextBuilder.h"
-#include "../src/Builder/HTMLBuilder.h"
+#include "../main/Builder/Builder.h"
+#include "../main/Builder/Director.h"
+#include "../main/Builder/TextBuilder.h"
+#include "../main/Builder/HTMLBuilder.h"
 
 template <class T>
 std::string mainScenario(T *builder)

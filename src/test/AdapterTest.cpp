@@ -1,47 +1,54 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include "../src/Adapter/PrintBanner.h"
-#include "../src/Adapter/PrintBannerAssign.h"
+#include "../main/Adapter/PrintBanner.h"
+#include "../main/Adapter/PrintBannerAssign.h"
 
-class AdapterTest : public ::testing::Test {
- protected:
+class AdapterTest : public ::testing::Test
+{
+protected:
   PrintBanner *target = new PrintBanner("Hello");
 };
 
-class AssignAdapterTest : public ::testing::Test {
- protected:
+class AssignAdapterTest : public ::testing::Test
+{
+protected:
   PrintBannerAssign *target = new PrintBannerAssign("Hello");
 };
 
-TEST_F(AdapterTest, PrintWeakTest) {
+TEST_F(AdapterTest, PrintWeakTest)
+{
   testing::internal::CaptureStdout();
   target->printWeak();
   std::string output = testing::internal::GetCapturedStdout();
   ASSERT_EQ(output, "(Hello)\n");
 }
 
-TEST_F(AdapterTest, PrintStrongTest) {
+TEST_F(AdapterTest, PrintStrongTest)
+{
   testing::internal::CaptureStdout();
   target->printStrong();
   std::string output = testing::internal::GetCapturedStdout();
   ASSERT_EQ(output, "*Hello*\n");
 }
 
-TEST_F(AssignAdapterTest, PrintWeakTest) {
+TEST_F(AssignAdapterTest, PrintWeakTest)
+{
   testing::internal::CaptureStdout();
   target->printWeak();
   std::string output = testing::internal::GetCapturedStdout();
   ASSERT_EQ(output, "(Hello)\n");
 }
 
-TEST_F(AssignAdapterTest, PrintStrongTest) {
+TEST_F(AssignAdapterTest, PrintStrongTest)
+{
   testing::internal::CaptureStdout();
   target->printStrong();
   std::string output = testing::internal::GetCapturedStdout();
   ASSERT_EQ(output, "*Hello*\n");
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
