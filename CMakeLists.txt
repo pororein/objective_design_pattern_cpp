@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(object_design_pattern VERSION 0.1.0)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 include(CTest)
 find_package(GTest REQUIRED)
 include(GoogleTest)
@@ -65,6 +68,8 @@ set(BUILDER_TEST_SRC
   src/main/Builder/TextBuilder.cpp
   src/main/Builder/HTMLBuilder.h
   src/main/Builder/HTMLBuilder.cpp)
+set(ABSTRACT_FACTORY_TEST_SRC
+  src/test/AbstractFactoryTest.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
@@ -99,6 +104,33 @@ add_executable(builderTest ${BUILDER_TEST_SRC})
 target_link_libraries(builderTest GTest::gtest GTest::gtest_main)
 add_test(NAME builderTest COMMAND builderTest)
 
+add_executable(abstractFactoryTest ${ABSTRACT_FACTORY_TEST_SRC})
+add_library(abstractFactoryLib
+src/main/AbstractFactory/factory/Item.hpp
+src/main/AbstractFactory/factory/Link.hpp
+src/main/AbstractFactory/factory/Page.hpp
+src/main/AbstractFactory/factory/Tray.hpp
+src/main/AbstractFactory/factory/Factory.hpp
+src/main/AbstractFactory/listfactory/ListLink.hpp
+src/main/AbstractFactory/listfactory/ListLink.cpp
+src/main/AbstractFactory/listfactory/ListPage.hpp
+src/main/AbstractFactory/listfactory/ListPage.cpp
+src/main/AbstractFactory/listfactory/ListTray.hpp
+src/main/AbstractFactory/listfactory/ListTray.cpp
+src/main/AbstractFactory/listfactory/ListFactory.hpp
+src/main/AbstractFactory/listfactory/ListFactory.cpp
+src/main/AbstractFactory/tablefactory/TableLink.hpp
+src/main/AbstractFactory/tablefactory/TableLink.cpp
+src/main/AbstractFactory/tablefactory/TablePage.hpp
+src/main/AbstractFactory/tablefactory/TablePage.cpp
+src/main/AbstractFactory/tablefactory/TableTray.hpp
+src/main/AbstractFactory/tablefactory/TableTray.cpp
+src/main/AbstractFactory/tablefactory/TableFactory.hpp
+src/main/AbstractFactory/tablefactory/TableFactory.cpp)
+add_dependencies(abstractFactoryTest abstractFactoryLib)
+target_link_libraries(abstractFactoryTest abstractFactoryLib GTest::gtest GTest::gtest_main)
+add_test(NAME abstractFactoryTest COMMAND abstractFactoryTest)
+
 # CTestに単体テストを登録
 gtest_discover_tests(sampleTest)
 gtest_discover_tests(iteratorTest)
@@ -108,6 +140,7 @@ gtest_discover_tests(factoryTest)
 gtest_discover_tests(singletonTest)
 gtest_discover_tests(prototypeTest)
 gtest_discover_tests(builderTest)
+gtest_discover_tests(abstractFactoryTest)
 
 add_executable(object_design_pattern main.cpp)
 
