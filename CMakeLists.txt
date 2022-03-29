@@ -70,6 +70,15 @@ set(BUILDER_TEST_SRC
   src/main/Builder/HTMLBuilder.cpp)
 set(ABSTRACT_FACTORY_TEST_SRC
   src/test/AbstractFactoryTest.cpp)
+set(BRIDGE_TEST_SRC
+  src/test/BridgeTest.cpp
+  src/main/Bridge/implementation/DisplayImpl.hpp
+  src/main/Bridge/implementation/StringDisplayImpl.hpp
+  src/main/Bridge/implementation/StringDisplayImpl.cpp
+  src/main/Bridge/function/Display.hpp
+  src/main/Bridge/function/Display.cpp
+  src/main/Bridge/function/CountDisplay.hpp
+  src/main/Bridge/function/CountDisplay.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
@@ -131,6 +140,10 @@ add_dependencies(abstractFactoryTest abstractFactoryLib)
 target_link_libraries(abstractFactoryTest abstractFactoryLib GTest::gtest GTest::gtest_main)
 add_test(NAME abstractFactoryTest COMMAND abstractFactoryTest)
 
+add_executable(bridgeTest ${BRIDGE_TEST_SRC})
+target_link_libraries(bridgeTest GTest::gtest GTest::gtest_main)
+add_test(NAME bridgeTest COMMAND bridgeTest)
+
 # CTestに単体テストを登録
 gtest_discover_tests(sampleTest)
 gtest_discover_tests(iteratorTest)
@@ -141,6 +154,7 @@ gtest_discover_tests(singletonTest)
 gtest_discover_tests(prototypeTest)
 gtest_discover_tests(builderTest)
 gtest_discover_tests(abstractFactoryTest)
+gtest_discover_tests(bridgeTest)
 
 add_executable(object_design_pattern main.cpp)
 
