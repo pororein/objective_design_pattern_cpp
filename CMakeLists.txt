@@ -79,6 +79,17 @@ set(BRIDGE_TEST_SRC
   src/main/Bridge/function/Display.cpp
   src/main/Bridge/function/CountDisplay.hpp
   src/main/Bridge/function/CountDisplay.cpp)
+set(STRATEGY_TEST_SRC
+  src/test/StrategyTest.cpp
+  src/main/Strategy/Hand.hpp
+  src/main/Strategy/Hand.cpp
+  src/main/Strategy/Strategy.hpp
+  src/main/Strategy/ProbStrategy.hpp
+  src/main/Strategy/ProbStrategy.cpp
+  src/main/Strategy/WinningStrategy.hpp
+  src/main/Strategy/WinningStrategy.cpp
+  src/main/Strategy/Player.hpp
+  src/main/Strategy/Player.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
@@ -144,6 +155,10 @@ add_executable(bridgeTest ${BRIDGE_TEST_SRC})
 target_link_libraries(bridgeTest GTest::gtest GTest::gtest_main)
 add_test(NAME bridgeTest COMMAND bridgeTest)
 
+add_executable(strategyTest ${STRATEGY_TEST_SRC})
+target_link_libraries(strategyTest GTest::gtest GTest::gtest_main)
+add_test(NAME strategyTest COMMAND strategyTest)
+
 # CTestに単体テストを登録
 gtest_discover_tests(sampleTest)
 gtest_discover_tests(iteratorTest)
@@ -155,6 +170,7 @@ gtest_discover_tests(prototypeTest)
 gtest_discover_tests(builderTest)
 gtest_discover_tests(abstractFactoryTest)
 gtest_discover_tests(bridgeTest)
+gtest_discover_tests(strategyTest)
 
 add_executable(object_design_pattern main.cpp)
 
