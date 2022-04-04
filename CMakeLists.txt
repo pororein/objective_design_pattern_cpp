@@ -90,6 +90,16 @@ set(STRATEGY_TEST_SRC
   src/main/Strategy/WinningStrategy.cpp
   src/main/Strategy/Player.hpp
   src/main/Strategy/Player.cpp)
+set(COMPOSITE_TEST_SRC
+  src/test/CompositeTest.cpp
+  src/main/Composite/FileTreatmentException.hpp
+  src/main/Composite/FileTreatmentException.cpp
+  src/main/Composite/Entry.hpp
+  src/main/Composite/Entry.cpp
+  src/main/Composite/File.hpp
+  src/main/Composite/File.cpp
+  src/main/Composite/Directory.hpp
+  src/main/Composite/Directory.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
@@ -159,6 +169,10 @@ add_executable(strategyTest ${STRATEGY_TEST_SRC})
 target_link_libraries(strategyTest GTest::gtest GTest::gtest_main)
 add_test(NAME strategyTest COMMAND strategyTest)
 
+add_executable(compositeTest ${COMPOSITE_TEST_SRC})
+target_link_libraries(compositeTest GTest::gtest GTest::gtest_main)
+add_test(NAME compositeTest COMMAND compositeTest)
+
 # CTestに単体テストを登録
 gtest_discover_tests(sampleTest)
 gtest_discover_tests(iteratorTest)
@@ -171,6 +185,7 @@ gtest_discover_tests(builderTest)
 gtest_discover_tests(abstractFactoryTest)
 gtest_discover_tests(bridgeTest)
 gtest_discover_tests(strategyTest)
+gtest_discover_tests(compositeTest)
 
 add_executable(object_design_pattern main.cpp)
 
