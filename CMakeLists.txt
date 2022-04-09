@@ -100,6 +100,17 @@ set(COMPOSITE_TEST_SRC
   src/main/Composite/File.cpp
   src/main/Composite/Directory.hpp
   src/main/Composite/Directory.cpp)
+set(DECORATOR_TEST_SRC
+  src/test/DecoratorTest.cpp
+  src/main/Decorator/Display.hpp
+  src/main/Decorator/Display.cpp
+  src/main/Decorator/StringDisplay.hpp
+  src/main/Decorator/StringDisplay.cpp
+  src/main/Decorator/Border.hpp
+  src/main/Decorator/SideBorder.hpp
+  src/main/Decorator/SideBorder.cpp
+  src/main/Decorator/FullBorder.hpp
+  src/main/Decorator/FullBorder.cpp)
 
 # 単体テスト
 add_executable(sampleTest ${SAMPLE_TEST_SRC})
@@ -173,6 +184,10 @@ add_executable(compositeTest ${COMPOSITE_TEST_SRC})
 target_link_libraries(compositeTest GTest::gtest GTest::gtest_main)
 add_test(NAME compositeTest COMMAND compositeTest)
 
+add_executable(decoratorTest ${DECORATOR_TEST_SRC})
+target_link_libraries(decoratorTest GTest::gtest GTest::gtest_main)
+add_test(NAME decoratorTest COMMAND decoratorTest)
+
 # CTestに単体テストを登録
 gtest_discover_tests(sampleTest)
 gtest_discover_tests(iteratorTest)
@@ -186,6 +201,7 @@ gtest_discover_tests(abstractFactoryTest)
 gtest_discover_tests(bridgeTest)
 gtest_discover_tests(strategyTest)
 gtest_discover_tests(compositeTest)
+gtest_discover_tests(decoratorTest)
 
 add_executable(object_design_pattern main.cpp)
 
